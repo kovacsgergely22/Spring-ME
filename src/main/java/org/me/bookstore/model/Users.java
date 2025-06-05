@@ -8,12 +8,12 @@ import lombok.*;
 
 @Entity
 @Data
-public class Book {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String author;
-    private String publisher;
-    private int price;
+    private String username;
+    private int age;
+    private String gender;
+    private String address;
 }
