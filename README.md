@@ -117,6 +117,6 @@ Az adatbázis eléréséhez használható a H2 console, amit korábban engedély
 
 ## Felhasznált segédanyag:
 
-- [60 Days of Java : The Complete Java Masterclass](https://www.udemy.com/course/javamasterclass/)
+- [60 Days of Java : The Complete Java Masterclass - Udemy](https://www.udemy.com/course/javamasterclass/)
 - [baeldung.com a H2 adatbázishoz](https://www.baeldung.com/spring-boot-h2-database)
 - [h2database.com](https://www.h2database.com/html/features.html#feature_list)
