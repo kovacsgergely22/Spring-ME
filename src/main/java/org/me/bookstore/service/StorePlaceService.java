@@ -20,4 +20,8 @@ public class StorePlaceService {
     public StorePlace saveStorePlace(StorePlace storePlace){
         return storePlaceRepository.save(storePlace);
     }
+
+    public void deleteStorePlace(Long id){
+        storePlaceRepository.deleteById(id);
+    }
 }

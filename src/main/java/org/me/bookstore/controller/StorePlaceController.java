@@ -25,6 +25,11 @@ public class StorePlaceController {
         return storePlaceService.saveStorePlace(storePlace);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public void deleteStorePlace(@PathVariable Long id){
+        storePlaceService.deleteStorePlace(id);
+    }
+
     @PostConstruct
     public void init(){
         StorePlace storePlace = new StorePlace("Miskolci Könyváruház", 3500, "Miskolc", "Szeles utca 2");

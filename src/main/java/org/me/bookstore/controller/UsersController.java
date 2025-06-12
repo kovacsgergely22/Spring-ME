@@ -24,6 +24,11 @@ public class UsersController {
         return usersService.saveUser(users);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public void deleteUser(@PathVariable Long id){
+        usersService.deleteUser(id);
+    }
+
     @PostConstruct
     public void init(){
         Users user = new Users();

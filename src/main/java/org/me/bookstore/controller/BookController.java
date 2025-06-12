@@ -24,6 +24,11 @@ public class BookController {
         return bookService.saveBook(book);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable Long id){
+        bookService.deleteBook(id);
+    }
+
     @PostConstruct
     public void init(){
         Book book = new Book();
