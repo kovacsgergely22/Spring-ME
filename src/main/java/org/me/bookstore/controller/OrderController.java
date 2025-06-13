@@ -35,11 +35,6 @@ public class OrderController {
         return orderService.getOrderById(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteOrder(@PathVariable Long id) {
-        orderService.deleteOrder(id);
-    }
-
     @PostMapping
     public ResponseEntity<Order> saveOrder(@RequestBody Order order) {
         // Ellenőrizzük, hogy az order tartalmazza-e a szükséges adatokat
@@ -52,6 +47,16 @@ public class OrderController {
         return ResponseEntity.ok(savedOrder);
     }
 
+    @PutMapping("/{id}")
+    public Order updateOrder(@PathVariable Long id, @RequestBody Order order) {
+        order.setId(id);
+        return orderService.updateOrder(order);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteOrder(@PathVariable Long id) {
+        orderService.deleteOrder(id);
+    }
 
     @PostConstruct
     public void init() {

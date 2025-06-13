@@ -17,7 +17,15 @@ public class UsersService {
         return usersRepository.findAll();
     }
 
+    public Users getUserById(Long id){
+        return usersRepository.findById(id).orElse(null);
+    }
+
     public Users saveUser(Users users){
+        return usersRepository.save(users);
+    }
+
+    public Users updateUser(Users users){
         return usersRepository.save(users);
     }
 

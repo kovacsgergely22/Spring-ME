@@ -19,9 +19,20 @@ public class UsersController {
         return usersService.getAllUsers();
     }
 
+    @GetMapping("/{id}")
+    public Users getUserById(@PathVariable Long id){
+        return usersService.getUserById(id);
+    }
+
     @PostMapping
     public Users createUser(@RequestBody Users users){
         return usersService.saveUser(users);
+    }
+
+    @PutMapping("/{id}")
+    public Users updateUser(@PathVariable Long id, @RequestBody Users users){
+        users.setId(id);
+        return usersService.updateUser(users);
     }
 
     @DeleteMapping(value = "/{id}")

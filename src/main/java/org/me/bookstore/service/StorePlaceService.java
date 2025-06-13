@@ -17,7 +17,15 @@ public class StorePlaceService {
         return storePlaceRepository.findAll();
     }
 
+    public StorePlace getStorePlaceById(Long id){
+        return storePlaceRepository.findById(id).orElse(null);
+    }
+
     public StorePlace saveStorePlace(StorePlace storePlace){
+        return storePlaceRepository.save(storePlace);
+    }
+
+    public StorePlace updateStorePlace(StorePlace storePlace){
         return storePlaceRepository.save(storePlace);
     }
 

@@ -58,11 +58,33 @@ Ez a metódus a JpaRepository osztályból örökölt, melynek metódusai a köv
 
 ![jparepository](img/jparepository.png)
 
+### Az Id alapján kereső metódus
+
+A következő kód az adatbázis táblában a megadott Id azonosítójú objektumot adja vissza.
+
+![getbookbyid](img/getbookbyid.png)
+
+### A publisher alapján kereső metódus
+
+A következő metódus a könyv objektum publisher adattagja alapján ad vissza egy listát, az összes Book objektummal, amelynek a kiadója a megadott kiadó. 
+
+![getbookbypubliher](img/getbookbypublisher.png)
+
 ### Az entitást elmentő metódus
 
 A mentést a következő kódsor végzi:
 
 ![save](img/save.png)
+
+### A felülírást végrehajtó metódus
+
+![updateboook](img/updatebook.png)
+
+Az utóbbi kettő között a különbség majd a Controller osztályban végrehajtott requestek között lesz. Az előbbi metódust egy POST kéréshez, az utóbbit egy PUT kéréshez használjuk fel.
+
+### A törlést végrehajtó metódus
+
+![deletebook](img/deletebook.png)
 
 ## A vezérlő létrehozása
 
@@ -78,11 +100,49 @@ A kérésre történő válaszadás a @GetMapping annotáció segítségével t�
 
 ![getallbooks](img/getallbooks.png)
 
+### Az Id alapján kereső GET metódus
+
+![getmappingid](img/getmappingid.png)
+
+### A publisher alapján keresó GET metódus
+
+![getmappingpublisher](img/getmappingpublisher.png)
+
+A kettő utóbbinál a @PathVariable annotáció segítségével az elérési utat adjuk meg.
+
 ### A POST kérést végrehajtó metódus
 
 A @PostMapping annotáció segítségével jelölhetjük azt a metódust, amellyel POST kérést szeretnénk végrehajtani. A metódus a következő:
 
 ![post](img/post.png)
+
+### A PUT kérést végrehajtó metódus
+
+A @PutMapping annotáció segítségével hajthatunk végre PUT kérést.
+
+![putmapping](img/putmapping.png)
+
+### A DELETE kérést végrehajtó metódus
+
+A @DeleteMapping annotáció segítségével hajthatunk végre törlési kérést.
+
+![deletemapping](img/deletemapping.png)
+
+## Adatbázis műveletek
+
+Az adatbázis-táblák létrehozása során különböző annotációkkal elnevezhetjük az adatbázis-táblák összetevőit. A @Table(name = "orders") segítségével nevezhetjük el a táblát a @Column segítségével pedig a táblát alkotó oszlopok neveit adhatjuk meg (ezek egyébként az objektum adattagjai).
+
+Az Order objektum esetében kapcsoltam össze táblákat, mivel a rendelés során hivatkozunk User és Book osztályokra is.
+
+Az adatbázis táblák kapcsolása történhet a @OneToOne a @OneToMany és a @ManyToOne annotációk segítségével (ez az objektumok közötti kapcsolat számosságát adja meg).
+
+Az Order entitás kódja:
+
+![order](img/order.png)
+
+A @ManyToMany annotáció automatikusan létrehoz egy kapcsolótáblát (ORDERS-BOOKS):
+
+![orders-books](img/orders-books.png)
 
 ## A projekt futtatása
 
@@ -94,17 +154,45 @@ Ha a Spring Initalizr segítségével (vagy az IntelliJ Idea Ultimate verziójá
 
 ## Ellenőrzés Postman segítségével
 
-## GET kérés végrehajtása
+### GET kérés végrehajtása
 
 ![postmanbookget](img/postmanbookget.png)
 
 ![postmanusersget](img/postmanusersget.png)
 
-## POST kérés végrehajtása
+### GET kérés Id alapján
+
+![getid](img/getid.png)
+
+### GET kérés author alapján, listában
+
+![getauthor](img/getauthor.png)
+
+### POST request végrehajtása
 
 ![postmanuserspost](img/postmanuserspost.png)
 
 ![postmanbookpost](img/postmanbookpost.png)
+
+### PUT request
+
+A korábbi GET request segítségével kért 2-es Id számú objektum módosítása:
+
+![put](img/put.png)
+
+Módosítás után az újabb GET request eredménye:
+
+![getputid](img/getputid.png)
+
+A cím módosult "Operating Systems"-ről "Operating Systems - 2"-re.
+
+### DELETE request
+
+A korábban hozzáadott, 6-os Id-vel ellátott objektum törlése:
+
+![delete](img/delete.png)
+
+A képen látható 200 OK válasz mutatja, hogy a törlés sikeresen végre lett hajtva.
 
 ## H2 Console
 
@@ -115,8 +203,12 @@ Az adatbázis eléréséhez használható a H2 console, amit korábban engedély
 
 ![h2consoleusers](img/h2consoleusers.png)
 
+A többi entitás és az azokat kezelő osztályok és metódusok létrehozása az előzőek alapján történik.
+
 ## Felhasznált segédanyag:
 
 - [60 Days of Java : The Complete Java Masterclass - Udemy](https://www.udemy.com/course/javamasterclass/)
 - [baeldung.com a H2 adatbázishoz](https://www.baeldung.com/spring-boot-h2-database)
 - [h2database.com](https://www.h2database.com/html/features.html#feature_list)
+- [Spring Boot 3, Spring 6 & Hibernate for Beginners - Udemy](https://www.udemy.com/course/spring-hibernate-tutorial/)
+- IntelliJ Idea AI chat (ahol használtam benne hagytam az AI magyarázó megjegyzéseit)

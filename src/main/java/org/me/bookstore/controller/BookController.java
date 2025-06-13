@@ -19,9 +19,35 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
+    @GetMapping("/{id}")
+    public Book getBookById(@PathVariable Long id){
+        return bookService.getBookById(id);
+    }
+
+    @GetMapping("/title/{title}")
+    public List<Book> getBookByTitle(@PathVariable String title){
+        return bookService.getBookByTitle(title);
+    }
+
+    @GetMapping("/author/{author}")
+    public List<Book> getBookByAuthor(@PathVariable String author){
+        return bookService.getBookByAuthor(author);
+    }
+
+    @GetMapping("/publisher/{publisher}")
+    public List<Book> getBookByPublisher(@PathVariable String publisher){
+        return bookService.getBookByPublisher(publisher);
+    }
+
     @PostMapping
     public Book createBook(@RequestBody Book book){
         return bookService.saveBook(book);
+    }
+
+    @PutMapping("/{id}")
+    public Book updateBook(@PathVariable Long id, @RequestBody Book book){
+        book.setId(id);
+        return bookService.updateBook(book);
     }
 
     @DeleteMapping("/{id}")

@@ -20,9 +20,20 @@ public class StorePlaceController {
         return storePlaceService.getAllStorePlaces();
     }
 
+    @GetMapping("/{id}")
+    public StorePlace getStorePlaceById(@PathVariable Long id){
+        return storePlaceService.getStorePlaceById(id);
+    }
+
     @PostMapping
     public StorePlace createStorePlace(@RequestBody StorePlace storePlace){
         return storePlaceService.saveStorePlace(storePlace);
+    }
+
+    @PutMapping("/{id}")
+    public StorePlace updateStorePlace(@PathVariable Long id, @RequestBody StorePlace storePlace){
+        storePlace.setId(id);
+        return storePlaceService.updateStorePlace(storePlace);
     }
 
     @DeleteMapping(value = "/{id}")
